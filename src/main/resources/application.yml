@@ -1,0 +1,30 @@
+# Configuración para que no muestre el error en el json, y así mejorar la seguridad
+server:
+  error:
+    include-message: never
+    include-stacktrace: never
+
+# Configuración para que muestre los colores en la salida por consola de Spring
+spring:
+  output:
+    ansi:
+      enabled: always
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-custom.html
+
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:~/db_departamento
+    username: sa
+    password:
+
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
