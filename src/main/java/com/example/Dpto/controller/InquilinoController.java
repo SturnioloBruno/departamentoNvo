@@ -1,6 +1,7 @@
 package com.example.Dpto.controller;
 
 import com.example.Dpto.dto.InquilinoDto;
+import com.example.Dpto.exception.ResourceNotFoundException;
 import com.example.Dpto.service.InquilinoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ public class InquilinoController {
     }
 
     @GetMapping("/{id}")
-    public InquilinoDto getInquilino(@PathVariable Long id) {
+    public InquilinoDto getInquilino(@PathVariable Long id) throws ResourceNotFoundException {
         return inquilinoService.leerInquilino(id);
     }
 

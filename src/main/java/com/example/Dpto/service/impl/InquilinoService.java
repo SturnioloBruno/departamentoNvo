@@ -2,6 +2,7 @@ package com.example.Dpto.service.impl;
 
 import com.example.Dpto.dao.InquilinoRepository;
 import com.example.Dpto.dto.InquilinoDto;
+import com.example.Dpto.exception.ResourceNotFoundException;
 import com.example.Dpto.model.Inquilino;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,8 @@ public class InquilinoService implements com.example.Dpto.service.InquilinoServi
     }
 
     @Override
-    public InquilinoDto leerInquilino(Long id) {
-        Inquilino inquilino = inquilinoRepository.findById(id).orElseThrow();
+    public InquilinoDto leerInquilino(Long id) throws ResourceNotFoundException {
+        Inquilino inquilino = inquilinoRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("No se encontro el inquilino con id: " + id));
         return mapper.convertValue(inquilino, InquilinoDto.class);
     }
 
