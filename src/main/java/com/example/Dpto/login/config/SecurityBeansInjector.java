@@ -1,35 +1,39 @@
 package com.example.Dpto.login.config;
 
 import com.example.Dpto.login.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
-@Component
+@Configuration
+@RequiredArgsConstructor
 public class SecurityBeansInjector {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-        return authenticationConfiguration.getAuthenticationManager();
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception
+    {
+        return config.getAuthenticationManager();
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-        provider.setUserDetailsService(userDetailsService());
-        provider.setPasswordEncoder(passwordEncoder());
-
-        return provider;
+    public AuthenticationProvider authenticationProvider()
+    {
+        DaoAuthenticationProvider authenticationProvider= new DaoAuthenticationProvider();
+        authenticationProvider.setUserDetailsService(userDetailService());
+        authenticationProvider.setPasswordEncoder(passwordEncoder());
+        return authenticationProvider;
     }
 
     @Bean
@@ -38,11 +42,9 @@ public class SecurityBeansInjector {
     }
 
     @Bean
-    public UserDetailsService userDetailsService() {
-        return username -> {
-            return userRepository.findByUsername(username)
-                    .orElseThrow(() -> new RuntimeException("User not found"));
-        };
+    public UserDetailsService userDetailService() {
+        return username -> userRepository.findByUsername(username)
+                .orElseThrow(()-> new UsernameNotFoundException("User not fournd"));
     }
 
 }

@@ -3,7 +3,7 @@ server:
   error:
     include-message: never
     include-stacktrace: never
-  port: 8080
+  port: 8081
 
 # Configuración para que muestre los colores en la salida por consola de Spring
 spring:
