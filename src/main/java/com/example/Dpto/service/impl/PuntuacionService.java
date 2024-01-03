@@ -1,6 +1,6 @@
 package com.example.Dpto.service.impl;
 
-import com.example.Dpto.dao.PuntuacionRepository;
+import com.example.Dpto.repository.PuntuacionRepository;
 import com.example.Dpto.dto.PuntuacionDto;
 import com.example.Dpto.model.Puntuacion;
 import com.fasterxml.jackson.databind.ObjectMapper;

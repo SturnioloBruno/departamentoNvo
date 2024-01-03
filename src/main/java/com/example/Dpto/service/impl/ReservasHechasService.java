@@ -1,6 +1,6 @@
 package com.example.Dpto.service.impl;
 
-import com.example.Dpto.dao.ReservasHechasRepository;
+import com.example.Dpto.repository.ReservasHechasRepository;
 import com.example.Dpto.dto.ReservasHechasDto;
 import com.example.Dpto.model.ReservasHechas;
 import com.fasterxml.jackson.databind.ObjectMapper;

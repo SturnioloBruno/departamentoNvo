@@ -1,6 +1,6 @@
 package com.example.Dpto.service.impl;
 
-import com.example.Dpto.dao.InquilinoRepository;
+import com.example.Dpto.repository.InquilinoRepository;
 import com.example.Dpto.dto.InquilinoDto;
 import com.example.Dpto.exception.ResourceNotFoundException;
 import com.example.Dpto.model.Inquilino;

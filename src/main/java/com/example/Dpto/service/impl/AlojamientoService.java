@@ -1,13 +1,12 @@
 package com.example.Dpto.service.impl;
 
-import com.example.Dpto.dao.AlojamientoRepository;
+import com.example.Dpto.repository.AlojamientoRepository;
 import com.example.Dpto.dto.AlojamientoDto;
 import com.example.Dpto.model.Alojamiento;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 

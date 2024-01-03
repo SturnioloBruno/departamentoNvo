@@ -3,6 +3,7 @@ server:
   error:
     include-message: never
     include-stacktrace: never
+  port: 8080
 
 # Configuración para que muestre los colores en la salida por consola de Spring
 spring:
@@ -10,11 +11,14 @@ spring:
     ansi:
       enabled: always
 
+
 springdoc:
   swagger-ui:
     path: /swagger-ui-custom.html
 
   datasource:
+    name: dashboard
+    generate-unique-name: false
     driverClassName: org.h2.Driver
     url: jdbc:h2:~/db_departamento
     username: sa
@@ -28,3 +32,12 @@ springdoc:
     properties:
       hibernate:
         format_sql: true
+
+  h2:
+    console:
+      enabled: true
+
+security:
+  jwt:
+    expiration-minutes: 30
+    secret-key: bWkgY2xhdmUgZXMgbXV5IHNlZ3VyYSwgeSBubyBkZWJlcmlhIGVzdGFyIGVuIGdpdGh1YiwgcGVybyBlc3RvIGVzIHVuIGVqZW1wbG8=

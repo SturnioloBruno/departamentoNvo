@@ -1,4 +1,4 @@
-package com.example.Dpto.dao;
+package com.example.Dpto.repository;
 
 import com.example.Dpto.model.Puntuacion;
 import org.springframework.data.repository.CrudRepository;
